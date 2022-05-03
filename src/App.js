@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import './styles/PostItem.css'
+import {NaviBar} from "./components/NaviBar";
+import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
+import {Footer} from "./components/Footer";
+import {adminRoutes} from "./router";
+import {UserContext} from "./context";
+import {useEffect, useState} from "react";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [user, setUser] = useState({auth: false});
+
+    return (
+        <div className={"wrapp"}>
+            <UserContext.Provider value={{user, setUser}}>
+            <Router>
+                <NaviBar/>
+                    <Routes>
+                        {adminRoutes.map(route =>
+                            <Route element={route.component}
+                                   path={route.path}/>
+                        )}
+                    </Routes>
+            </Router>
+            <Footer/>
+            </UserContext.Provider>
+        </div>
+    );
 }
 
 export default App;
