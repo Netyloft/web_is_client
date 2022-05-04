@@ -1,8 +1,7 @@
 import React, {useContext, useState} from "react";
 import {Button, Container} from "react-bootstrap";
-import {NewPostForm} from "../components/NewPostForm";
 import axios from "axios";
-import {Link, useNavigate} from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 import {URL_API} from "../constans/constans";
 import {UserContext} from "../context";
 

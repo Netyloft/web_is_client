@@ -5,7 +5,7 @@ import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import {Footer} from "./components/Footer";
 import {adminRoutes} from "./router";
 import {UserContext} from "./context";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 
 function App() {
     const [user, setUser] = useState({auth: false});
