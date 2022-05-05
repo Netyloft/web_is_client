@@ -1,9 +1,9 @@
-import {Home} from "../pages/Home";
-import {Admin} from "../pages/Admin";
-import {NewPost} from "../pages/NewPost";
-import {Post} from "../pages/Post";
-import {UserProfile} from "../pages/UserProfile";
-import {LogIn} from "../pages/LogIn";
+import {Home} from "../pages/Home/Home";
+import {Admin} from "../pages/Admin/Admin";
+import {NewPost} from "../pages/NewPost/NewPost";
+import {Post} from "../pages/Post/Post";
+import {UserProfile} from "../pages/UserProfile/UserProfile";
+import {LogIn} from "../pages/Login/LogIn";
 import React from "react";
 
 export const privateRoutes = [

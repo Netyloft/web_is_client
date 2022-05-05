@@ -1,0 +1,19 @@
+.AppHeader {
+  display:grid;
+  min-height: 100vh;
+  grid-template-rows: 10% 1fr 10%;
+
+  .Header {
+    grid-row: 1/2;
+    max-height: 70px;
+  }
+
+  .Body {
+    grid-row:2/3;
+  }
+
+  .Footer {
+    grid-row: 3/4;
+    max-height: 70px;
+  }
+}

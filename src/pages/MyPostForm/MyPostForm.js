@@ -1,11 +1,11 @@
 import React, {useContext, useEffect, useState} from "react";
 import {Button, Container} from "react-bootstrap";
-import {PostForm} from "../components/PostForm";
+import {PostForm} from "../../components/PostForm";
 import axios from "axios";
-import {NewComment} from "../components/NewComment";
+import {NewComment} from "../../components/NewComment";
 import {useNavigate, useParams} from "react-router-dom";
-import {URL_API} from "../constans/constans";
-import {UserContext} from "../context";
+import {URL_API} from "../../constans/constans";
+import {UserContext} from "../../context";
 
 export function MyPostForm(props) {
 

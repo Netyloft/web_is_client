@@ -1,8 +1,8 @@
 import React, {useContext, useState} from "react";
 import {Button, Container} from "react-bootstrap";
 import axios from "axios";
-import {URL, URL_API} from "../constans/constans";
-import {UserContext} from "../context";
+import {URL, URL_API} from "../../constans/constans";
+import {UserContext} from "../../context";
 import {useNavigate} from "react-router-dom";
 
 export function LogIn() {

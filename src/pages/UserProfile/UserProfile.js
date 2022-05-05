@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 import axios from "axios";
-import {UserInfo} from "../components/UserInfo";
+import {UserInfo} from "../../components/UserInfo";
 import {Container} from "react-bootstrap";
-import {PostItem} from "../components/PostItem";
-import {URL_API} from "../constans/constans";
+import {PostItem} from "../../components/PostItem";
+import {URL_API} from "../../constans/constans";
 
 
 export function UserProfile() {

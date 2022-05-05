@@ -6,12 +6,13 @@ import {Footer} from "./components/Footer";
 import {adminRoutes} from "./router";
 import {UserContext} from "./context";
 import {useState} from "react";
+import style from './App.module.scss';
 
 function App() {
     const [user, setUser] = useState({auth: false});
 
     return (
-        <div className={"wrapp"}>
+        <div className={style.AppHeader}>
             <UserContext.Provider value={{user, setUser}}>
             <Router>
                 <NaviBar/>

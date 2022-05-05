@@ -2,13 +2,15 @@ import React, {useContext, useEffect, useState} from "react";
 import {Button, Container, Table} from "react-bootstrap";
 import axios from "axios";
 import {BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer} from 'recharts';
-import {URL, URL_API} from "../constans/constans";
-import {UserContext} from "../context";
-import {Home} from "./Home";
-import {UserTable} from "../components/UserTable";
-import {PostTable} from "../components/PostTable";
-import {UserStatTable} from "../components/UserStatTable";
-import {Graphick} from "../components/Graphick";
+import {URL, URL_API} from "../../constans/constans";
+import {UserContext} from "../../context";
+import {Home} from "../Home/Home";
+import {UserTable} from "../../components/UserTable";
+import {PostTable} from "../../components/PostTable";
+import {UserStatTable} from "../../components/UserStatTable";
+import {Graphick} from "../../components/Graphick";
+import AppStyle from '../../App.module.scss';
+import cn from 'classnames';
 
 const headUserStat = [
     {name: "Id"}, {name: "Пользователь"}, {name: "Кол-во статей"}, {name: "Кол-во комментариев"}
@@ -91,8 +93,7 @@ export function Admin() {
     }
 
     return (
-        <>
-            <Container>
+            <Container className={AppStyle.Body}>
                 <Button className="btn btn-primary mt-3 mb-3 me-2" onClick={getFile}>Скачать файл</Button>
                 <Button className="btn btn-primary mt-3 mb-3 me-2" onClick={getStat}>График</Button>
                 <Button className="btn btn-primary mt-3 mb-3 me-2" onClick={getUsers}>Пользователи</Button>
@@ -102,6 +103,5 @@ export function Admin() {
                 {usersVis ? <UserTable user={users}/> : postsVis ? <PostTable post={posts}/> : userStatVis ? <UserStatTable user={userStat}/> : statVis ? <Graphick stat={stat}/> : <></>}
 
             </Container>
-
-        </>)
+)
 }

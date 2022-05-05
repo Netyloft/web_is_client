@@ -1,11 +1,12 @@
 import React, {useContext, useEffect, useState} from "react";
 import {Nav, Navbar, Button, Container, Modal, ModalHeader, ModalBody, Form, FormText} from "react-bootstrap";
-import {Link, Route, useNavigate} from "react-router-dom";
+import {Link, Route, useNavigate, Outlet} from "react-router-dom";
 import styled from "styled-components";
 import {adminNavi, publicNavi, privatNavi} from "../router";
 import {UserContext} from "../context";
 import axios from "axios";
 import {URL, URL_API} from "../constans/constans";
+import style from '../App.module.scss';
 
 const Styles = styled.div`
   a, .navbar-brand, .navbar-nav, .nav-link {
