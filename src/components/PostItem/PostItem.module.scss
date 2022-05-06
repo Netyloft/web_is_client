@@ -1,0 +1,44 @@
+.Post{
+    border-radius: 5px;
+    padding: 5px 5px 5px 25px;
+    box-shadow: 0 4px 10px rgba(0,0,0,.1);
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+    &:not(:first-child){
+        margin-top: 30px;
+
+    }
+    &:hover{
+        background-color: rgb(202, 212, 212);
+    }
+
+    .Link{
+        text-decoration: none;
+        color: black;
+
+        .PostContent{
+            .AuthorText{
+                font-weight: bold;
+                font-size: 17px;
+            }
+        
+            .TitleText{
+                text-overflow: ellipsis;
+                text-decoration: none;
+                overflow: hidden; 
+                white-space: nowrap;
+                font-weight: bold;
+                font-size: 25px;
+                text-decoration: none;
+            }
+        }
+    }
+
+
+}
+
+
+
+
+

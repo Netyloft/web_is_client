@@ -1,19 +1,45 @@
 .AppHeader {
   display:grid;
   min-height: 100vh;
-  grid-template-rows: 10% 1fr 10%;
+  grid-template-rows: minmax(5%,70px ) 1fr minmax(5%, 70px );
 
   .Header {
+    box-sizing: border-box;
     grid-row: 1/2;
-    max-height: 70px;
+    height: 100%;
   }
 
   .Body {
+    box-sizing: border-box;
     grid-row:2/3;
+    margin: 20px auto;
   }
 
   .Footer {
+    padding: 1%;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    box-sizing: border-box;
     grid-row: 3/4;
-    max-height: 70px;
+    background-color: #212529; 
+    color: '#fff';
+  }
+}
+
+.NavBar {
+  height: 100%;
+
+  .Link{
+    margin-left: 20px;
+  }
+
+  a, .navbar-brand, .navbar-nav, .nav-link {
+    color: #adb1b8;
+    text-decoration: none;
+
+    &:hover {
+      color: white
+    }
   }
 }

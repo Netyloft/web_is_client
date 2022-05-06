@@ -7,36 +7,24 @@ import {LogIn} from "../pages/Login/LogIn";
 import React from "react";
 
 export const privateRoutes = [
-        {path: '/', component: <Home/>},
-        {path: '/new-post', component: <NewPost/>},
-        {path: '/post/:id', component: <Post/>},
-        {path: '/user/:id', component: <UserProfile/>},
+        {path: '/new-post', element: <NewPost/>}
 ]
 
 export const publicRoutes = [
-        {path: '/', component: <Home/>},
-        {path: '/login', component: <LogIn/>},
-        {path: '/post/:id', component: <Post/>},
-        {path: '/user/:id', component: <UserProfile/>},
+        {path: '/', element: <Home/>},
+        {path: '/post/:id', element: <Post/>},
+        {path: '/user/:id', element: <UserProfile/>},
 ]
 
 export const adminRoutes = [
-        {path: '/', component: <Home/>},
-        {path: '/admin', component: <Admin/>},
-        {path: '/login', component: <LogIn/>},
-        {path: '/new-post', component: <NewPost/>},
-        {path: '/post/:id', component: <Post/>},
-        {path: '/user/:id', component: <UserProfile/>},
+        {path: '/admin', element: <Admin/>},
 ]
 
 export const adminNavi = [
-    {to: "/", text: "Главная"},
-    {to: "/new-post", text: "Новая статья"},
     {to: "/admin", text: "Администраторская"}
 ]
 
 export const privatNavi = [
-        {to: "/", text: "Главная"},
         {to: "/new-post", text: "Новая статья"}
 ]
 

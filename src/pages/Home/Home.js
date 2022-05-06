@@ -1,10 +1,9 @@
 import React, {useEffect, useState} from "react";
 import {Container} from "react-bootstrap";
-import {PostItem} from "../../components/PostItem";
-import PostServices from "../../services/PostService";
+import {PostItem} from "../../components/PostItem/PostItem";
 import axios from "axios";
 import {URL_API} from "../../constans/constans";
-import style from './Home.module.scss';
+import style from '../../App.module.scss';
 
 export function Home() {
     const [posts, setPosts] = useState([]);
@@ -20,9 +19,7 @@ export function Home() {
 
     return (
         <Container className={style.Body}>
-            {posts.map(post =>
-                <PostItem post={post} key={post.id}/>
-            )}
+            {posts.map(post => <PostItem key={`/post/${post.id}`} post={post}/>)}
         </Container>
     )
 }

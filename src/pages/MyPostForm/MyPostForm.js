@@ -1,74 +1,69 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, {useContext, useState } from "react";
 import {Button, Container} from "react-bootstrap";
-import {PostForm} from "../../components/PostForm";
-import axios from "axios";
-import {NewComment} from "../../components/NewComment";
-import {useNavigate, useParams} from "react-router-dom";
-import {URL_API} from "../../constans/constans";
+import {useNavigate, useParams } from "react-router-dom";
 import {UserContext} from "../../context";
+import AppStyle from '../../App.module.scss';
+import PostAPI from "../../API/PostAPI";
 
-export function MyPostForm(props) {
+export function MyPostForm({post}) {
 
-    const {user, setUser} = useContext(UserContext);
-
-    const [title, setTitle] = useState("");
-    const [body, setBody] = useState("");
-    const [tags, setTags] = useState("");
-    const [author, setAuthor] = useState("");
-
-    const [up, setUp] = useState(true);
-
-    const params = useParams()
+    const {user} = useContext(UserContext);
+    const [isEditing, setIsEditing] = useState(false);
+    const [title, setTitle] = useState(post.title);
+    const [body, setBody] = useState(post.body);
+    const [tags, setTags] = useState(post.tags);
 
     const navigate = useNavigate();
 
-    useEffect(() => {
-        if (up) {
-            setTitle(props.post.title)
-            setBody(props.post.body)
-            setTags(props.post.tags)
-            setUp(false)
-        }
-    })
-
-    async function PostRequest() {
-        const response = await axios.put(URL_API + '/article/update/', {
-            id: params.id,
-            title: title,
-            body: body,
-            authorId: user.id,
-            tags: tags
-        }, {
-            headers: { Authorization: `Bearer ${user.jwt}` }
-        })
+    const clickSaveHandler = () => {
+        PostAPI.updatePost(post.id,{title,body,user, tags})
+        setIsEditing(false);
     }
 
-    async function DeleteRequest() {
-        const response = await axios.delete(URL_API + `/article/${params.id}`, {
-            headers: { Authorization: `Bearer ${user.jwt}` }
-        })
-        navigate("/")
+    const clickDeleteHandler = () => {
+        PostAPI.deletePost(post.id, user);
+        navigate('/');
     }
+
+    const clickCancelHandler = () => {
+        setTitle(post.title);
+        setBody(post.body);
+        setTags(post.tags);
+        setIsEditing(false);
+    }
+
 
     return (
-        <Container className="mt-5">
+        <Container className={AppStyle.Body} >
             <div className={"mb-3"}>
-                <Button className="btn btn-primary me-2" onClick={PostRequest}>Редактировать</Button>
-                <Button className="btn btn-danger" onClick={DeleteRequest}>Удалить</Button>
+                {isEditing ?<>
+                            <Button className="btn btn-primary me-2" onClick={clickCancelHandler}>Оменить</Button>  
+                            <Button className="btn btn-primary me-2" onClick={clickSaveHandler}>Сохранить</Button>
+                            </>:
+                            <Button className="btn btn-primary me-2" onClick={() => setIsEditing(true)}>Редактировать</Button>}
+                <Button className="btn btn-danger" onClick={clickDeleteHandler}>Удалить</Button>
             </div>
             <div className="input-group mb-3">
-                <input type="text" className="form-control" placeholder="Заголовок" value={title}
-                       aria-describedby="basic-addon2" onChange={event => setTitle(event.target.value)}/>
+                {isEditing ? <input type="text" className="form-control" placeholder="Заголовок" value={title}
+                    aria-describedby="basic-addon2" onChange={event => setTitle(event.target.value)}/>
+                    : <h2>{title}</h2>}
             </div>
 
             <div className="input-group mb-3">
-                    <textarea className="form-control" placeholder="Статья" value={body}
-                              onChange={event => setBody(event.target.value)}/>
+            {isEditing ?  <textarea className="form-control" value={body}
+                            onChange={event => setBody(event.target.value)}/>:
+                            <div >
+                                {body}
+                            </div>}
             </div>
 
             <div className="input-group mb-3">
-                <input type="text" className="form-control" placeholder="Теги" value={tags}
-                       aria-describedby="basic-addon2" onChange={event => setTags(event.target.value)}/>
+                {isEditing ? <input type="text" className="form-control" placeholder="Теги" value={tags}
+                        aria-describedby="basic-addon2" onChange={event => setTags(event.target.value)}/>:
+                            <div>
+                                {tags}
+                            </div>
+                        }
             </div>
         </Container>
 

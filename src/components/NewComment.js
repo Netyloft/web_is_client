@@ -40,19 +40,23 @@ export function NewComment(props) {
     }
 
     return (
-        <>
-            <div className="input-group mb-2">
-                <textarea className="form-control" placeholder="Новый комментарий" value={body}
-                          onChange={event => setBody(event.target.value)}/>
-            </div>
+        <div>
+            {user &&
+                (<div>
 
-            <Button className="mb-4" onClick={PostRequest}>Прокомментировать</Button>
+                <div className="input-group mb-2">
+                    <textarea className="form-control" placeholder="Новый комментарий" value={body}
+                            onChange={event => setBody(event.target.value)}/>
+                </div>
 
+                <Button className="mb-4" onClick={PostRequest}>Прокомментировать</Button></div>)
+                }
+            Комментарии
             <Container>
                 {comments.map(comment =>
                     <Comment comment={comment} key={comment.id}/>
                 )}
             </Container>
-        </>
+        </div>
     )
 }

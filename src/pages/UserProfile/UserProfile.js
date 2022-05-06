@@ -3,8 +3,9 @@ import {useParams} from "react-router-dom";
 import axios from "axios";
 import {UserInfo} from "../../components/UserInfo";
 import {Container} from "react-bootstrap";
-import {PostItem} from "../../components/PostItem";
+import {PostItem} from "../../components/PostItem/PostItem";
 import {URL_API} from "../../constans/constans";
+import AppStyle from '../../App.module.scss'
 
 
 export function UserProfile() {
@@ -33,7 +34,7 @@ export function UserProfile() {
     }
 
     return (
-        <Container>
+        <Container className = {AppStyle.Body}>
             <UserInfo user={user}/>
 
             {posts.map(post =>

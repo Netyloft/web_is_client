@@ -12,7 +12,9 @@ const LoginForm = ({extensionOnSubmit}) => {
     const clickLoginHandler = async () =>{
         try{
             const user = await UserAPI.Auntificate(login,password);
-            loginUser(user);
+            if(user){
+                loginUser(user);
+            }
             extensionOnSubmit && extensionOnSubmit();
         }
         catch(e){
@@ -26,7 +28,7 @@ const LoginForm = ({extensionOnSubmit}) => {
                         onChange={event => setLogin(event.target.value)}/>
         </Form.Group>
         <Form.Group className={"mt-2"} controlId={"fromBasicPassword"}>
-            <Form.Control type={"Пароль"} placeholder={"Пароль"}
+            <Form.Control type='password' placeholder={"Пароль"}
                         onChange={event => setPassword(event.target.value)}/>
         </Form.Group>
         <Form.Group controlId={"fromBasicPassword"}>

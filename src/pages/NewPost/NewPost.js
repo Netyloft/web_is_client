@@ -4,6 +4,7 @@ import axios from "axios";
 import { useNavigate} from "react-router-dom";
 import {URL_API} from "../../constans/constans";
 import {UserContext} from "../../context";
+import AppStyle from '../../App.module.scss'
 
 export function NewPost() {
 
@@ -35,8 +36,7 @@ export function NewPost() {
     }
 
     return (
-        <Container className="mt-5">
-            <>
+        <Container className={AppStyle.Body} >
                 <div className={"mb-3"}>
                     <Button className="btn btn-primary me-2" onClick={PostRequest}>Опубликовать</Button>
                 </div>
@@ -54,7 +54,6 @@ export function NewPost() {
                     <input type="text" className="form-control" placeholder="Теги"
                            aria-describedby="basic-addon2" onChange={event => setTags(event.target.value)}/>
                 </div>
-            </>
         </Container>
     )
 }
