@@ -15,7 +15,7 @@ export function Post() {
     const {user} = useContext(UserContext);
 
     const [userIsAuthor, setUserIsAuthor] = useState(false)
-    const [author, setAuthor] = useState("")
+    const [author, setAuthor] = useState({})
 
     const {id} = useParams()
 
@@ -25,7 +25,8 @@ export function Post() {
                 const postFromQuery = await PostAPI.getPostById(id);
                 if(postFromQuery){
                     setPost(postFromQuery);
-                    setAuthor(postFromQuery.author.nickName);
+                    console.log(postFromQuery.author)
+                    setAuthor(postFromQuery.author);
                     setUserIsAuthor(postFromQuery.author.id === user?.id)
                 }
             }
@@ -33,6 +34,7 @@ export function Post() {
                 console.log(e);
             }
         })()
+        console.log(post)
     }, [id, user])
 
 
