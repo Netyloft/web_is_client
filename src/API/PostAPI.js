@@ -18,7 +18,6 @@ class PostAPI {
             const response = await axios.delete(URL_API + `/article/${id}`, {
                 headers: { Authorization: `Bearer ${user.jwt}` }
             })
-            console.log(response)
         }
         catch(e){
             console.log(e)
@@ -37,7 +36,6 @@ class PostAPI {
             }, {
                 headers: { Authorization: `Bearer ${user.jwt}` }
             })
-            console.log(response);
         }
         catch(e){
             console.log(e);

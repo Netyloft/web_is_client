@@ -12,7 +12,6 @@ const RegistrationForm = ({extensionOnSubmit}) => {
         if (login.trim().length > 0 && email.trim().length > 0 && password.trim().length > 0) {
             try{
                 const res = await UserAPI.Registrate(login,email,password);
-                console.log(res);
                 extensionOnSubmit && extensionOnSubmit();
             }
             catch(e){

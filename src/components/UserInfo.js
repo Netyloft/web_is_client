@@ -4,9 +4,6 @@ import {useParams} from "react-router-dom";
 import axios from "axios";
 
 export const UserInfo = (props) => {
-
-    console.log(props)
-
     return (
 
         <div className={"post"}>

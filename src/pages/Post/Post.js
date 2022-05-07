@@ -25,7 +25,6 @@ export function Post() {
                 const postFromQuery = await PostAPI.getPostById(id);
                 if(postFromQuery){
                     setPost(postFromQuery);
-                    console.log(postFromQuery.author)
                     setAuthor(postFromQuery.author);
                     setUserIsAuthor(postFromQuery.author.id === user?.id)
                 }
@@ -34,7 +33,6 @@ export function Post() {
                 console.log(e);
             }
         })()
-        console.log(post)
     }, [id, user])
 
 

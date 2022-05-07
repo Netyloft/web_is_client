@@ -31,7 +31,6 @@ export function NewPost() {
         }, {
             headers: { Authorization: `Bearer ${user.jwt}` }
         })
-        console.log(user.jwt)
         navigate(`/post/${response.data.data.id}`)
     }
 

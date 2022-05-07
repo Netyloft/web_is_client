@@ -7,9 +7,6 @@ const headPost = [
 ]
 
 export function PostTable(props) {
-
-    console.log(props.post)
-
     return (
         <table className="table table-bordered">
             <thead>
