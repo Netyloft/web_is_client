@@ -1,13 +1,29 @@
-import React from "react";
 import {Bar, BarChart, CartesianGrid, Legend, Tooltip, XAxis, YAxis} from "recharts";
+import React, {useEffect, useState, useContext} from "react";
+import {URL_API} from "../constans/constans";
+import {UserContext} from "../context";
+import axios from "axios";
 
-export function Graphick(props) {
+export function Graphick() {
+    const [data, setData ] = useState();
+    const {user } = useContext(UserContext);
+
+    useEffect(() => {
+        ( async() =>{
+            const response = await axios.get(URL_API + '/stat/grapf',
+                {
+                headers: {Authorization: `Bearer ${user.jwt}`}
+            })
+            setData(response.data.data.items)
+        })()
+
+    })
 
     return (
         <BarChart
             width={1500}
             height={400}
-            data={props.stat}
+            data={data}
             margin={{
                 top: 5,
                 right: 30,
