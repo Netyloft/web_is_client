@@ -17,36 +17,27 @@ const headUserStat = [
 const initNav = {statVis: false, userStatVis:false,usersVis:false, postsVis:false };
 
 export function Admin() {
-
-    const {user, setUser} = useContext(UserContext);
     const [statNav , setStatNav] = useState(initNav);
-    const [users, setUsers] = useState([]);
-    const [posts, setPosts] = useState([]);
-    const [usersStats, setUsersStats] = useState([]);
-    const [data, setData] = useState([])
 
     async function getFile() {
         window.open(URL_API + '/file/')
     }
 
-
-    async function getUsersStat() {
+    function getUsersStat() {
         setStatNav({...initNav, usersStatVis: true})
     }
 
-    async function getPosts() {
+    function getPosts() {
         setStatNav({...initNav, postsVis: true})
     }
 
-    async function getStat() {
-        const response = await axios.get(URL_API + '/stat/grapf',
-            {
-            headers: {Authorization: `Bearer ${user.jwt}`}
-        })
-        setStat(response.data.data.items)
-
+    function getStat() {
         setStatNav({...initNav, statVis: true})
     }
+
+    function getUsers() {
+        setStatNav({...initNav, statVis: true})
+    }    
 
     return (
         <>
@@ -60,7 +51,7 @@ export function Admin() {
                             График
                         </Button>
                 <Button className="btn btn-primary mt-3 mb-3 me-2" 
-                        onClick={() => setStatNav({...initNav, usersVis: true})}>
+                        onClick={getUsers}>
                         Пользователи
                         </Button>
                 <Button className="btn btn-primary mt-3 mb-3 me-2" 
