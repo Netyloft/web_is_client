@@ -1,11 +1,12 @@
 import React from "react";
 import { Link} from 'react-router-dom'
+import style from './PostForm.module.scss'
 
 export function PostForm(props) {
     return (
         <div>
             <div>
-                Автор:<Link to={`/user/${props.author.id}`}>{props.author.nickName}</Link>
+                Автор:<Link className={style.link} to={`/user/${props.author.id}`}>{props.author.nickName}</Link>
             </div>
             <div className="input-group mb-3 mt-3">
                 <h2>

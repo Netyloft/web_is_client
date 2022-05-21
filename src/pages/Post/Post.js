@@ -1,6 +1,6 @@
 import React, {useContext, useLayoutEffect, useState} from "react";
 import {Button, Container} from "react-bootstrap";
-import {PostForm} from "../../components/PostForm";
+import {PostForm} from "../../components/PostForm/PostForm";
 import axios from "axios";
 import {NewComment} from "../../components/NewComment";
 import {useParams} from "react-router-dom";
